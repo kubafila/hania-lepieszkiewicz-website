@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import { ClientRouter } from "astro:transitions";
+import portfolioImg from '../assets/portfolio.svg'
+import aboutImg from '../assets/omnie.svg'
+import offertImg from '../assets/oferta.svg'
+import contactImg from '../assets/kontakt.svg'
+
+---
+<style lang="scss">
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body{
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    gap: 64px;
+
+  }
+  .menu {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 64px;
+
+    &__link{
+      display: inline-block;
+      width: fit-content; // Dopasowanie szerokości do zawartości
+      padding: 32px 24px;
+    }
+  }
+  main{
+    flex: 1;
+  }
+
+</style>
+
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Hania Lepieszkiewicz - Portfolio</title>
+    <ClientRouter />
+</head>
+<body>
+<nav class="menu">
+    <a href="/portfolio" class="menu__link"> <Image src={portfolioImg} alt="Portfolio" /></a>
+    <a href="/o-mnie" class="menu__link"> <Image src={aboutImg} alt="O mnie" /></a>
+    <a href="/oferta" class="menu__link"> <Image src={offertImg} alt="Oferta" /></a>
+    <a href="/kontakt" class="menu__link"> <Image src={contactImg} alt="Kontakt" /></a>
+</nav>
+<main>
+<slot />
+</main>
+</body>
+</html>

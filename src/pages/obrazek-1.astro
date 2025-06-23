@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import heroImg from "../assets/Na_Główna_.png"
+---
+<style lang="scss">
+
+  .hero-img{
+    height: auto;
+    width: 100%;
+    max-width: 600px;
+    object-fit: contain;
+  }
+
+</style>
+<Layout>
+
+    <h2 transition:name="title">Obrazek 1</h2>
+        <Image transition:name="hero" src={heroImg} alt="Portert Hani" class="hero-img"/>
+</Layout>
