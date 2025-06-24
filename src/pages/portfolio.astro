@@ -20,19 +20,36 @@ import heroImg from "../assets/Na_Główna_.png"
         border: 3px dotted orange ;
         display: flex;
         flex-direction: column;
-        width: 400px;
         color: #000;
         text-decoration: none;
         text-align: center;
     }
+
+    .wrapper{
+        display: grid;
+        grid-template-columns: repeat(3, 300px);
+        gap: 24px;
+        align-items: start;
+
+    }
 </style>
 <Layout>
 
-    <h1 transition:name="page-title">Portfolio</h1>
+    <h1>Portfolio</h1>
 
-    <a href="/obrazek-1" class="card">
+    <div class="wrapper">
+    <a href="/portfolio/obrazek-1" class="card">
         <h2 >Obrazek 1</h2>
-        <Image transition:name="hero" src={heroImg} alt="Portert Hani" class="hero-img"/>
+        <Image  src={heroImg} alt="Portert Hani" class="hero-img" transition:name="obrazek-1"/>
     </a>
+    <a href="/portfolio/obrazek-2" class="card">
+        <h2 >Obrazek 2</h2>
+        <Image  src={heroImg} alt="Portert Hani" class="hero-img" transition:name="obrazek-2"/>
+    </a>
+    <a href="/portfolio/obrazek-3" class="card">
+        <h2 >Obrazek 3</h2>
+        <Image src={heroImg} alt="Portert Hani" class="hero-img" transition:name="obrazek-3"/>
+    </a>
+    </div>
 
 </Layout>

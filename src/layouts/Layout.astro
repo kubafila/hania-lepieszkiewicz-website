@@ -43,7 +43,7 @@ import contactImg from '../assets/kontakt.svg'
 
 </style>
 
-<html lang="pl">
+<html lang="pl" transition:name="root" transition:animate="none">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -52,14 +52,14 @@ import contactImg from '../assets/kontakt.svg'
     <title>Hania Lepieszkiewicz - Portfolio</title>
     <ClientRouter />
 </head>
-<body>
+<body >
 <nav class="menu">
     <a href="/portfolio" class="menu__link"> <Image src={portfolioImg} alt="Portfolio" /></a>
     <a href="/o-mnie" class="menu__link"> <Image src={aboutImg} alt="O mnie" /></a>
     <a href="/oferta" class="menu__link"> <Image src={ofertImg} alt="Oferta" /></a>
     <a href="/kontakt" class="menu__link"> <Image src={contactImg} alt="Kontakt" /></a>
 </nav>
-<main>
+<main transition:name="body" transition:animate="fade">
 <slot />
 </main>
 </body>

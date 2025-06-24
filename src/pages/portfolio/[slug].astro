@@ -1,0 +1,29 @@
+---
+import {Image} from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import heroImg from "../../assets/Na_Główna_.png"
+export function getStaticPaths() {
+  return [
+    { params: { slug: "obrazek-1" }},
+    { params: { slug: "obrazek-2" }},
+    { params: { slug: "obrazek-3" }},
+  ];
+}
+
+const { slug } = Astro.params;
+---
+<style lang="scss">
+
+  .hero-img{
+    height: auto;
+    width: 100%;
+    max-width: 600px;
+    object-fit: contain;
+  }
+
+</style>
+<Layout>
+
+    <h2 transition:name="title">{slug}</h2>
+    <Image transition:name={slug} src={heroImg} alt="Portert Hani" class="hero-img"/>
+</Layout>
