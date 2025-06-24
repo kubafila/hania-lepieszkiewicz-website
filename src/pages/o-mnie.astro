@@ -1,6 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import {Image} from "astro:assets";
 ---
+<style>
+    .title{
+        font-weight: 800;
+        font-size: var(--text-size-xl);
+        color: var(--color-blue);
+    }
+</style>
 <Layout>
-    <h1>O mnie</h1>
+
+    <section class="text-wrapper">
+        <h1 transition:name="page-title">O mnie</h1>
+    <p class="title">Cześć!</p>
+    <p>Jestem Hania. Jestem absolwentką ZUT w Szczecinie na kierunku wzornictwo i Akademii Sztuki
+    w Szczecinie na kierunku grafika artystyczna. Zbieram książki dla dzieci, rysuję w szkicowniku,
+        czasem trochę śpiewam. Lubię też jesień i historie z dreszczykiem.</p>
+
+    <p>Specjalizuję się w tworzeniu ilustracji do książek dla dzieci. Chętnie zilustruję również grę
+    planszową, puzzle lub wykonam ilustrację dla Twojej marki! A może chcesz zamówić portret albo
+    masz jeszcze inny pomysł? Napisz do mnie! Stwórzmy razem coś pięknego!</p>
+    </section>
+
 </Layout>
