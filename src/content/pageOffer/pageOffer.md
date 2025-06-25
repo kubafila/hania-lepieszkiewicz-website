@@ -1,5 +1,5 @@
 ---
 pl:
   title: Oferta
-  description: ofofofo
+  description: Tu będzie oferta
 ---
