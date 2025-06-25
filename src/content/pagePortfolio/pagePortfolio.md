@@ -67,6 +67,7 @@ pl:
       image: /src/assets/1750843205715.jpeg
       title: Żyrafa
       slug: zyrafa
+      description: Żyrafka
     - visible: true
       image: /src/assets/1750843214141.jpeg
       title: "Cozy coffee shop corner "
