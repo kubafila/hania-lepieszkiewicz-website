@@ -1,4 +1,6 @@
 ---
+import {getEntry} from "astro:content";
+const locale = Astro.currentLocale ?? 'pl';
 import {Image} from 'astro:assets';
 import {ClientRouter} from "astro:transitions";
 import '../styles/reset.css'
@@ -11,6 +13,8 @@ import Ofert from '../assets/oferta.svg'
 import Contact from '../assets/kontakt.svg'
 
 const currentPath = Astro.url.pathname;
+const siteSettingsEntry = await getEntry('settings', 'settings');
+const siteSettings = siteSettingsEntry.data[locale];
 ---
 <style is:global>
     .menu__link--active svg .cls-1 {
@@ -75,7 +79,27 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="generator" content={Astro.generator}/>
-    <title>Hania Lepieszkiewicz - Portfolio</title>
+    <!-- META TAGS -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description"  content={siteSettings.metaTags.description} />
+    <meta name="keywords" content={siteSettings.metaTags.keywords} />
+    <meta name="robots" content="index,follow" />
+    <!-- OPEN GRAPH -->
+    <meta property="og:locale" content={locale} />
+    <meta property="og:title" content={siteSettings.openGraph.title} />
+    <meta
+      property="og:description"
+      content={siteSettings.openGraph.description}
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content={siteSettings.openGraph.image.src}
+    />
+    <!-- -->
+    <title>{siteSettings.metaTags.title}</title>
     <ClientRouter/>
 </head>
 <body>

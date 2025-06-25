@@ -1,4 +1,6 @@
 ---
+import DOMPurify from "isomorphic-dompurify";
+import {marked} from "marked";
 import PortfolioCard from "../components/PortfolioCard.astro";
 const locale = Astro.currentLocale ?? 'pl';
 import { getCollection } from 'astro:content';
@@ -7,6 +9,9 @@ import Layout from "../layouts/Layout.astro";
 const pageCollection = await getCollection('pagePortfolio');
 
 const pageData = pageCollection[0].data[locale]
+
+const renderHTMLFromMarkdown = (markdownText) =>
+  DOMPurify.sanitize(marked.parse(markdownText));
 ---
 <style lang="scss">
     .wrapper{

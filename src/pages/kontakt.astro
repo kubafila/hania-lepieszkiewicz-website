@@ -1,6 +1,28 @@
+
 ---
+import DOMPurify from "isomorphic-dompurify";
+import {marked} from "marked";
 import Layout from "../layouts/Layout.astro";
+
+const locale = Astro.currentLocale ?? 'pl';
+import { getCollection } from 'astro:content';
+
+const pageCollection = await getCollection('pageContact');
+
+const data = pageCollection[0].data[locale]
+const renderHTMLFromMarkdown = (markdownText) =>
+  DOMPurify.sanitize(marked.parse(markdownText));
 ---
+<style is:global>
+    h2{
+        font-weight: 800;
+        font-size: var(--text-size-xl);
+        color: var(--color-blue);
+    }
+</style>
 <Layout>
-    <h1>Kontakt</h1>
+    <h1>{data.title}</h1>
+    <section class="text-wrapper">
+        <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")} />
+    </section>
 </Layout>
