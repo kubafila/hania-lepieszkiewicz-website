@@ -5,11 +5,18 @@ import '../styles/reset.css'
 import '../styles/global.css'
 import '@fontsource-variable/plus-jakarta-sans';
 import '@fontsource/fira-sans';
-import portfolioImg from '../assets/portfolio.svg'
-import aboutImg from '../assets/omnie.svg'
-import ofertImg from '../assets/oferta.svg'
-import contactImg from '../assets/kontakt.svg'
+import Portfolio from '../assets/portfolio.svg'
+import About from '../assets/omnie.svg'
+import Ofert from '../assets/oferta.svg'
+import Contact from '../assets/kontakt.svg'
+
+const currentPath = Astro.url.pathname;
 ---
+<style is:global>
+    .menu__link--active svg .cls-1 {
+        fill: var(--color-orange)
+    }
+</style>
 <style lang="scss">
   * {
     padding: 0;
@@ -52,10 +59,7 @@ import contactImg from '../assets/kontakt.svg'
     flex-direction: column;
     gap: 64px;
 
-    &__link {
-      display: inline-block;
-      width: fit-content; // Dopasowanie szerokości do zawartości
-    }
+
   }
 
   main {
@@ -77,17 +81,17 @@ import contactImg from '../assets/kontakt.svg'
 <body>
 <div class="page-wrapper">
     <nav class="menu">
-        <a href="/portfolio" class="menu__link">
-            <Image src={portfolioImg} alt="Portfolio"/>
+        <a href="/portfolio" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
+           <Portfolio/>
         </a>
-        <a href="/o-mnie" class="menu__link">
-            <Image src={aboutImg} alt="O mnie"/>
+        <a href="/o-mnie" class={`menu__link ${currentPath === '/o-mnie' ? 'menu__link--active' : ''}`}>
+            <About />
         </a>
-        <a href="/oferta" class="menu__link">
-            <Image src={ofertImg} alt="Oferta"/>
+        <a href="/oferta" class={`menu__link ${currentPath === '/oferta' ? 'menu__link--active' : ''}`}>
+            <Ofert />
         </a>
-        <a href="/kontakt" class="menu__link">
-            <Image src={contactImg} alt="Kontakt"/>
+        <a href="/kontakt" class={`menu__link ${currentPath === '/kontakt' ? 'menu__link--active' : ''}`}>
+            <Contact />
         </a>
     </nav>
     <main transition:name="body" transition:animate="fade">

@@ -3,7 +3,7 @@ import {Image} from "astro:assets";
 import {getCollection, render} from 'astro:content';
 const locale = Astro.currentLocale ?? 'pl';
 import { marked } from 'marked';
-
+import { ArrowLeft } from '@lucide/astro';
 const pageCollection = await getCollection('pagePortfolio');
 import Layout from "../../layouts/Layout.astro";
 const pageData = pageCollection[0].data[locale]
@@ -40,9 +40,28 @@ const renderHTMLFromMarkdown = (markdownText) =>
 .text-wrapper{
     max-width: 60ch;
 }
+.back-wrapper{
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 12px;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid var(--color-blue);
+    margin-bottom: 16px;
+
+}
+.link{
+    color: var(--color-blue);
+    text-decoration: none;
+    font-weight: 700;
+}
 </style>
 <Layout>
 
+    <div class="back-wrapper">
+        <ArrowLeft color="rgb(33, 80, 104)"/>
+        <a href="/portfolio" class="link">Wróć</a>
+    </div>
     <h2 transition:name="title">{data.title}</h2>
     <div class="image-wrapper">
 
