@@ -2,7 +2,7 @@
 pl:
   title: O mnie
   description: >-
-    ## Cześć!
+    ## Cześć ludzie!
 
 
     Jestem Hania. Jestem absolwentką ZUT w Szczecinie na kierunku wzornictwo i Akademii Sztuki w Szczecinie na kierunku grafika artystyczna. Zbieram książki dla dzieci, rysuję w szkicowniku, czasem trochę śpiewam. Lubię też jesień i historie z dreszczykiem.
