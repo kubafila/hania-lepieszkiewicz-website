@@ -27,7 +27,7 @@ collections:
       - name: "homepage"
         i18n: true
         label: "Strona główna"
-        file: src/content/pageHomepage/homepage.md
+        file: src/content/pageHomepage/pageHomepage.md
         fields:
           - label: "Zdjęcie"
             i18n: true
@@ -41,14 +41,28 @@ collections:
 
       - name: "about"
         label: "O mnie" # Used in the UI
-        file: src/content/pageAbout/about.md
+        file: src/content/pageAbout/pageAbout.md
         i18n: true
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
           - { label: "Opis 1", name: "description", widget: "markdown", i18n: true }
           - { label: "Opis 2", name: "description2", widget: "markdown", i18n: true }
           - { label: "Opis 3", name: "description3", widget: "markdown", i18n: true }
-
+      - name: "portfolio"
+        label: "Portfolio" # Used in the UI
+        file: src/content/pagePortfolio/pagePortfolio.md
+        i18n: true
+        fields:
+          - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
+          - label: "Ilustracje"
+            name: "items"
+            widget: "list"
+            summary: '{{fields.title}}'
+            fields:
+              - {label: "Widoczna", name: "visible", widget: "boolean", default: true}
+              - {label: "Tytuł", name: "title", widget: "string"}
+              - {label: "Grafika", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
+              - {label: "Opis", name: "description", widget: "markdown", i18n: true }
       - name: "contact-page"
         label: "Kontakt" # Used in the UI
         i18n: true
