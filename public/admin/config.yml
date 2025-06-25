@@ -11,7 +11,7 @@ public_folder: "assets"
 locale: 'pl'
 i18n:
   structure: single_file
-  locales: [ pl, en ]
+  locales: [ pl ]
   default_locale: pl
 
 collections:
@@ -35,9 +35,9 @@ collections:
             widget: "object"
             summary: 'Ustawienia baneru'
             fields:
-              - { label: "Zdjęcie w tle - dla komputerów", name: "heroImage", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
-              - { label: "Zdjęcie w tle - dla tabletów (1024px)", name: "heroImageTablet", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate, hint: 'Mniejsze zdjęcie pomaga w szybkości ładowania strony' }
-              - { label: "Zdjęcie w tle - dla telefonów (768px)", name: "heroImageMobile", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate, hint: 'Mniejsze zdjęcie pomaga w szybkości ładowania strony'}
+              - { label: "Zdjęcie w tle", name: "heroImage", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
+#              - { label: "Zdjęcie w tle - dla tabletów (1024px)", name: "heroImageTablet", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate, hint: 'Mniejsze zdjęcie pomaga w szybkości ładowania strony' }
+#              - { label: "Zdjęcie w tle - dla telefonów (768px)", name: "heroImageMobile", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate, hint: 'Mniejsze zdjęcie pomaga w szybkości ładowania strony'}
 
       - name: "about"
         label: "O mnie" # Used in the UI
@@ -45,9 +45,7 @@ collections:
         i18n: true
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
-          - { label: "Opis 1", name: "description", widget: "markdown", i18n: true }
-          - { label: "Opis 2", name: "description2", widget: "markdown", i18n: true }
-          - { label: "Opis 3", name: "description3", widget: "markdown", i18n: true }
+          - { label: "Opis", name: "description", widget: "markdown", i18n: true }
       - name: "portfolio"
         label: "Portfolio" # Used in the UI
         file: src/content/pagePortfolio/pagePortfolio.md
@@ -64,111 +62,29 @@ collections:
               - {label: "Slug", name: "slug", widget: "string", hint: 'Jaka ma być końcóweczka adresu strony. Bez spacji i polskich znaków. np. /portfolio/na-kurze-roze'}
               - {label: "Grafika", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
               - {label: "Opis", name: "description", widget: "markdown", i18n: true, required: false }
+      - name: "offer-page"
+        label: "Oferta" # Used in the UI
+        i18n: true
+        file: src/content/pageOffer/pageOffer.md
+        fields:
+          - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
+          - { label: "Opis", name: "description", widget: "markdown", i18n: true,  required: false }
       - name: "contact-page"
         label: "Kontakt" # Used in the UI
         i18n: true
         file: src/content/pageContact/pageContact.md
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
-          - label: "Osoby"
-            name: "contactList"
-            widget: "list"
-            i18n: true
-            summary: '{{fields.person.personName}}'
-            fields:
-              - label: Osoba
-                i18n: true
-                name: person
-                widget: object
-                fields:
-                  - { label: "(tytuł naukowy jeśli posiada) +  Imię", name: personName, widget: string,i18n: true }
-                  - { label: Zdjęcie, name: avatar, widget: image,  public_folder: '/src/assets/', i18n: true }
-                  - { label: Stanowisko, name: position, widget: string,i18n: true }
-          - label: "Sekcja 'Sekretariat kongresu'"
-            name: "secretariat"
-            i18n: true
-            widget: "object"
-            fields:
-              - { label: "Tytuł sekcji", name: "title", widget: "string", i18n: true }
-              - { label: "Treść sekcji" , name: "content", widget: "markdown", i18n: true }
-          - label: "Sekcja 'Dane kontaktowe'"
-            name: "contactDetails"
-            i18n: true
-            widget: "object"
-            fields:
-              - { label: "Tytuł sekcji", name: "title", widget: "string", i18n: true }
-              - { label: "Opis - Email", name: "emailTitle", widget: string, i18n: true }
-              - { label: "Email", name: "email", widget: string, i18n: true }
-              - { label: "Opis - Telefon", name: "phoneTitle", widget: string,i18n: true }
-              - { label: "Telefon", name: "phone", widget: string,i18n: true }
-              - { label: "Opis - Numer konta", name: "accountTitle", widget: string,i18n: true }
-              - { label: "Numer konta", name: "account", widget: string,i18n: true }
+          - { label: "Opis", name: "description", widget: "markdown", i18n: true,  required: false }
 
-#  - name: "logos"
-#    label: "Kafelki z logotypami"
-#    sortable_fields: [ ]
-#    editor:
-#      preview: false
-#    folder: "src/content/logos"
-#    create: false
-#    delete: false
-#    fields:
-#      - { label: "Ukryj na stronie", name: "hide", widget: "boolean", default: 'false', required: false }
-#      - { label: "PL - Nazwa", name: "titlePL", widget: "string", default: 'Patroni medialni' }
-#      - { label: "EN - Nazwa", name: "titleEN", widget: "string", default: 'Patroni medialni' }
-#      - label: "Kafelki"
-#        widget: "list"
-#        summary: '{{fields.title}}'
-#        name: 'logosList'
-#        fields:
-#          - { label: "Nazwa firmy/instytucji", name: "title", widget: "string" }
-#          - { label: "Logo", name: "image", widget: "image", public_folder: '/src/assets/' }
-#          - { label: "Link do strony", name: "link", widget: "string", required: false }
-#          - { label: "Rozszerz kafelek (szerokie logo)", name: "extraWidth", widget: "boolean", required: false }
-#  - name: 'experts'
-#    label: 'Eksperci'
-#    sortable_fields: [ ]
-#    editor:
-#      preview: false
-#    files:
-#      - file: "src/content/experts/experts.md"
-#        label: "Lista ekspertów"
-#        name: expert-list
-#        fields:
-#          - label: "Ekspert"
-#            widget: "list"
-#            summary: '{{fields.thumbnail.academic_title}} {{fields.thumbnail.title}}'
-#            name: 'expertDetails'
-#            fields:
-#              - name: "thumbnail"
-#                label: "Miniature"
-#                widget: "object"
-#                fields:
-#                  - { label: "Imię i nazwisko", name: "title", widget: "string" }
-#                  - { label: "Tytuł naukowy", name: "academicTitle", widget: "string", required: false }
-#                  - { label: "[EN] Tytuł naukowy", name: "academicTitleEN", widget: "string", required: false }
-#                  - { label: "Skrócona nazwa pracy (np. WAT)", name: "job", widget: "string", required: false }
-#                  - { label: "[EN] Skrócona nazwa pracy (np. WAT)", name: "jobEN", widget: "string", required: false }
-#                  - { label: "Zdjęcie", name: "image", widget: "image", public_folder: '/src/assets/' }
-#                  - { label: "Pokaż na stronie głównej", name: "showOnHomepage", widget: "boolean", default: false }
-#              - name: "popup"
-#                label: "Okienko z opisem"
-#                widget: "object"
-#                fields:
-#                  - { label: "Tytuł (np. Imię Nazwisko + Stanowisko)", name: "popupTitle", widget: "string" }
-#                  - { label: "[EN] Tytuł (np. Imię Nazwisko + Stanowisko)", name: "popupTitleEN", widget: "string" }
-#                  - { label: "Pełna nazwa pracy", name: "popupJob", widget: "string", required: false }
-#                  - { label: "[EN] Pełna nazwa pracy", name: "popupJobEN", widget: "string", required: false }
-#                  - { label: "Opis Eksperta", name: "description", widget: "markdown", required: false }
-#                  - { label: "[EN] Opis Eksperta", name: "descriptionEN", widget: "markdown", required: false }
   - name: 'settings'
     label: 'Ustawienia'
     sortable_fields: [ ]
     i18n:
       structure: single_file
-      locales: [ pl, en ]
+      locales: [ pl ]
     files:
-      - file: src/content/settings/meta.md
+      - file: src/content/settings/settings.md
         label: 'Meta tagi'
         name: 'meta'
         i18n: true
@@ -201,39 +117,3 @@ collections:
                 choose_url: false
                 public_folder: "/src/assets/"
                 i18n: "duplicate"
-  #  - name: 'mail'
-  #    label: 'Mail po zapisie'
-  #    sortable_fields: [ ]
-  #    i18n:
-  #      structure: single_file
-  #      locales: [ pl, en ]
-  #    files:
-  #      - file: src/content/mail/mail.md
-  #        label: 'Ustawienia maila'
-  #        name: 'mail'
-  #        i18n: true
-  #        create: true
-  #        delete: true
-  #        editor:
-  #          preview: false
-  #        fields:
-  #          - { label: "Tytuł maila", name: "title", widget: "string" , i18n: true }
-  #          - { label: "Nadawca maila", name: "sender", widget: "string" , i18n: true }
-  #          - { label: "Treść maila", name: "body", widget: "markdown" , i18n: true }
-#  - name: 'publish'
-#    label: 'Opublikuj stronę'
-#    sortable_fields: [ ]
-#    folder: "src/content/publish"
-#    create: false
-#    delete: false
-#    i18n: true
-#    editor:
-#      preview: true
-#    description: |-
-#      https://github.com/kubafila/counterterrorism-congress-2024-website/actions/workflows/publish.yml
-#      (prawa strona > szary guzik 'Run workflow' > zielony guzik 'Run workflow')
-#    fields:
-#      - { label: "test", name: "test", widget: "hidden", default: "test" }
-#      - { label: "Tytuł", name: "title", widget: "string" }
-#      - { label: "Treść", name: "body", widget: "markdown", modes: [
-#        'rich_text' ] }
