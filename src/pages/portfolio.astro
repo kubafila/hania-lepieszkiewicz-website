@@ -23,12 +23,14 @@ import heroImg from "../assets/Na_Główna_.png"
         color: #000;
         text-decoration: none;
         text-align: center;
+        height: 100%;
+        width: 100%;
     }
 
     .wrapper{
         display: grid;
-        grid-template-columns: repeat(3, 300px);
-        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+        gap: 32px;
         align-items: start;
 
     }
