@@ -1,7 +1,12 @@
 ---
+import PortfolioCard from "../components/PortfolioCard.astro";
+const locale = Astro.currentLocale ?? 'pl';
+import { getCollection } from 'astro:content';
 import Layout from "../layouts/Layout.astro";
-import { Image } from 'astro:assets';
-import heroImg from "../assets/Na_Główna_.png"
+
+const pageCollection = await getCollection('pagePortfolio');
+
+const pageData = pageCollection[0].data[locale]
 ---
 <style lang="scss">
     .wrapper{
@@ -9,26 +14,6 @@ import heroImg from "../assets/Na_Główna_.png"
         display: grid;
         place-items: center;
         width: 100%;
-    }
-    .hero-img{
-        height: auto;
-        width: 100%;
-        object-fit: contain;
-    }
-
-    .card{
-        border: 3px dotted orange ;
-        display: flex;
-        flex-direction: column;
-        color: #000;
-        text-decoration: none;
-        text-align: center;
-        height: 100%;
-        width: 100%;
-    }
-
-    .wrapper{
-        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
         gap: 32px;
         align-items: start;
@@ -37,21 +22,9 @@ import heroImg from "../assets/Na_Główna_.png"
 </style>
 <Layout>
 
-    <h1>Portfolio</h1>
 
     <div class="wrapper">
-    <a href="/portfolio/obrazek-1" class="card">
-        <h2 >Obrazek 1</h2>
-        <Image  src={heroImg} alt="Portert Hani" class="hero-img" transition:name="obrazek-1"/>
-    </a>
-    <a href="/portfolio/obrazek-2" class="card">
-        <h2 >Obrazek 2</h2>
-        <Image  src={heroImg} alt="Portert Hani" class="hero-img" transition:name="obrazek-2"/>
-    </a>
-    <a href="/portfolio/obrazek-3" class="card">
-        <h2 >Obrazek 3</h2>
-        <Image src={heroImg} alt="Portert Hani" class="hero-img" transition:name="obrazek-3"/>
-    </a>
+        {pageData.items.filter(item => item.visible).map(({title,image, slug }) => <PortfolioCard title={title} image={image} slug={slug}/>) }
     </div>
 
 </Layout>

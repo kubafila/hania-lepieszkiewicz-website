@@ -1,0 +1,25 @@
+---
+import {Image} from 'astro:assets';
+const {image, title, slug} = Astro.props
+---
+<style lang="scss">
+    .card {
+        display: flex;
+        flex-direction: column;
+        color: #000;
+        text-decoration: none;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        &__image{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+        }
+    }
+
+
+</style>
+<a href={`/portfolio/${slug}`} class="card">
+    <Image src={image} alt={title} class="card__image" transition:name={slug}/>
+</a>

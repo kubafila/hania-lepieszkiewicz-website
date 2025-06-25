@@ -1,29 +1,46 @@
 ---
 import {Image} from "astro:assets";
+import {getCollection, render} from 'astro:content';
+const locale = Astro.currentLocale ?? 'pl';
+import { marked } from 'marked';
+
+const pageCollection = await getCollection('pagePortfolio');
 import Layout from "../../layouts/Layout.astro";
-import heroImg from "../../assets/Na_Główna_.png"
-export function getStaticPaths() {
-  return [
-    { params: { slug: "obrazek-1" }},
-    { params: { slug: "obrazek-2" }},
-    { params: { slug: "obrazek-3" }},
-  ];
+const pageData = pageCollection[0].data[locale]
+import DOMPurify from 'isomorphic-dompurify';
+export async function getStaticPaths() {
+  const locale = Astro.currentLocale ?? 'pl';
+  const pageCollection = await getCollection('pagePortfolio');
+  const pageData = pageCollection[0].data[locale]
+  return pageData.items.map(item => ({params: {slug: item.slug}}))
 }
 
-const { slug } = Astro.params;
+const {slug} = Astro.params;
+
+
+const data = pageData.items.find(item => item.slug === slug)
+const renderHTMLFromMarkdown = (markdownText) =>
+  DOMPurify.sanitize(marked.parse(markdownText));
 ---
 <style lang="scss">
 
-  .hero-img{
+  .hero-img {
     height: auto;
     width: 100%;
     max-width: 600px;
     object-fit: contain;
+      margin-bottom: 2rem;
   }
-
+.text-wrapper{
+    max-width: 60ch;
+}
 </style>
 <Layout>
 
-    <h2 transition:name="title">{slug}</h2>
-    <Image transition:name={slug} src={heroImg} alt="Portert Hani" class="hero-img"/>
+    <h2 transition:name="title">{data.title}</h2>
+    <Image transition:name={slug} src={data.image} alt="Portert Hani" class="hero-img"/>
+    <div class="text-wrapper">
+    <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")} />
+
+    </div>
 </Layout>
