@@ -17,11 +17,13 @@ const {image, title, slug} = Astro.props
         border: 1px solid #E1E1E1;
         border-radius: 12px;
         overflow: hidden;
-
-        &:hover{
-            .card__image{
-                transform: scale(1.1);
+        @media screen and (min-width: 768px) {
+            &:hover{
+                .card__image{
+                    transform: scale(1.1);
+                }
             }
+
         }
 
         &__image{
