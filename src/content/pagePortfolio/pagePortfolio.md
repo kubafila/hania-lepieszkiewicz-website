@@ -54,7 +54,7 @@ pl:
       image: /src/assets/1750843192015.jpeg
       title: Goryl
       slug: goryl
-    - visible: true
+    - visible: false
       image: /src/assets/1750843196654.jpeg
       title: Krab
       slug: krab
