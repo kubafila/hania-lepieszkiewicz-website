@@ -1,39 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from 'astro:assets';
+import {Image} from 'astro:assets';
 import heroImg from "../assets/Na_Główna_.png"
+const deployToNetlify = import.meta.env.DEPLOY_TO_NETLIFY
 ---
 <style lang="scss">
-	body{
-		overflow: hidden;
-	}
-	.wrapper{
-		width: 100%;
-		display: grid;
-		place-items: center;
-	}
-	.hero-img{
-		height: auto;
-		width: 100%;
-		object-fit: contain;
-		max-width: 554px;
-	}
+  body {
+    overflow: hidden;
+  }
+
+  .wrapper {
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .hero-img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    max-width: 554px;
+  }
 </style>
 <Layout>
-	<div class="wrapper">
+    <div class="wrapper">
+        <Image src={heroImg} alt="Portert Hani" class="hero-img"/>
+    </div>
 
-	<Image src={heroImg} alt="Portert Hani" class="hero-img"/>
-	</div>
+  {deployToNetlify && <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+    </script>}
 
-	<script>
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", (user) => {
-				if (!user) {
-					window.netlifyIdentity.on("login", () => {
-						document.location.href = "/admin/";
-					});
-				}
-			});
-		}
-	</script>
 </Layout>
