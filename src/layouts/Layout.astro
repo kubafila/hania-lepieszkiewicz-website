@@ -84,13 +84,13 @@ const currentPath = Astro.url.pathname;
         <a href="/portfolio" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
            <Portfolio/>
         </a>
-        <a href="/o-mnie" class={`menu__link ${currentPath === '/o-mnie' ? 'menu__link--active' : ''}`}>
+        <a href="/o-mnie" class={`menu__link ${currentPath.includes('/o-mnie') ? 'menu__link--active' : ''}`}>
             <About />
         </a>
-        <a href="/oferta" class={`menu__link ${currentPath === '/oferta' ? 'menu__link--active' : ''}`}>
+        <a href="/oferta" class={`menu__link ${currentPath.includes('/oferta') ? 'menu__link--active' : ''}`}>
             <Ofert />
         </a>
-        <a href="/kontakt" class={`menu__link ${currentPath === '/kontakt' ? 'menu__link--active' : ''}`}>
+        <a href="/kontakt" class={`menu__link ${currentPath.includes('/kontakt') ? 'menu__link--active' : ''}`}>
             <Contact />
         </a>
     </nav>
