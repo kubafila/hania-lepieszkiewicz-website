@@ -24,12 +24,18 @@ const renderHTMLFromMarkdown = (markdownText) =>
 ---
 <style lang="scss">
 
-  .hero-img {
+  .image{
     height: auto;
-    width: 100%;
-    max-width: 600px;
+      width: 100%;
     object-fit: contain;
       margin-bottom: 2rem;
+      border-radius: 12px;
+
+  }
+  .image-wrapper{
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 600px;
   }
 .text-wrapper{
     max-width: 60ch;
@@ -38,7 +44,10 @@ const renderHTMLFromMarkdown = (markdownText) =>
 <Layout>
 
     <h2 transition:name="title">{data.title}</h2>
-    <Image transition:name={slug} src={data.image} alt="Portert Hani" class="hero-img"/>
+    <div class="image-wrapper">
+
+    <Image transition:name={slug} src={data.image} alt="Portert Hani" class="image"/>
+    </div>
     <div class="text-wrapper">
     <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")} />
 
