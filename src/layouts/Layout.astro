@@ -15,6 +15,8 @@ import Contact from '../assets/kontakt.svg'
 const currentPath = Astro.url.pathname;
 const siteSettingsEntry = await getEntry('settings', 'settings');
 const siteSettings = siteSettingsEntry.data[locale];
+
+const {withoutBodyTransition} = Astro.props
 ---
 <style is:global>
     .menu__link--active svg .cls-1 {
@@ -129,7 +131,7 @@ const siteSettings = siteSettingsEntry.data[locale];
             <Contact />
         </a>
     </nav>
-    <main transition:name="body" transition:animate="fade">
+    <main transition:name="body" transition:animate={withoutBodyTransition ? 'none' : 'fade'}>
         <slot/>
     </main>
 </div>
