@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 }
 
 const {slug} = Astro.params;
+const deployToNetlify = import.meta.env.DEPLOY_TO_NETLIFY
 
 
 const data = pageData.items.find(item => item.slug === slug)
@@ -68,7 +69,7 @@ const renderHTMLFromMarkdown = (markdownText) =>
 
     <div class="back-wrapper">
         <ArrowLeft color="rgb(33, 80, 104)"/>
-        <a href={`/portfolio#${slug}`}  class="link">Wróć</a>
+        <a href={deployToNetlify ? `/portfolio/#${slug}` :`/portfolio#${slug}`}  class="link">Wróć</a>
     </div>
     <h2 >{data.title}</h2>
     <div class="image-wrapper">
