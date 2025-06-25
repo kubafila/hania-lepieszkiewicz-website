@@ -62,10 +62,10 @@ const renderHTMLFromMarkdown = (markdownText) =>
         <ArrowLeft color="rgb(33, 80, 104)"/>
         <a href="/portfolio" class="link">Wróć</a>
     </div>
-    <h2 transition:name="title">{data.title}</h2>
+    <h2 >{data.title}</h2>
     <div class="image-wrapper">
 
-    <Image transition:name={slug} src={data.image} alt="Portert Hani" class="image"/>
+    <Image transition:name={slug} src={data.image} alt="Portert Hani" class="image" width="512" height="800"/>
     </div>
     <div class="text-wrapper">
     <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")} />
