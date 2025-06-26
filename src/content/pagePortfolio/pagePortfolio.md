@@ -11,7 +11,7 @@ pl:
         Z tej okazji pokazuję ilustrację na kartkę świąteczną, którą stworzyłam dla szczecińskiego przedszkola 😊 
     - visible: true
       image: /src/assets/1750843133295.jpeg
-      title: " Alicja w Krainie Kwiatów"
+      title: "Alicja w Krainie Kwiatów"
       slug: alicja-w-krainie-kwatow
       description: Wiosenny plakacik na podstawie ilustracji ze szkicownika sprzed 2
         lat. Alicja w Krainie Kwiatów 🌸🌼

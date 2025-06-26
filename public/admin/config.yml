@@ -24,21 +24,19 @@ collections:
     editor:
       preview: false
     files:
-#      - name: "homepage"
-#        i18n: true
-#        label: "Strona główna"
-#        file: src/content/pageHomepage/pageHomepage.md
-#        fields:
-#          - label: "Zdjęcie"
-#            i18n: true
-#            name: "hero"
-#            widget: "object"
-#            summary: 'Ustawienia baneru'
-#            fields:
-#              - { label: "Zdjęcie w tle", name: "heroImage", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
-#              - { label: "Zdjęcie w tle - dla tabletów (1024px)", name: "heroImageTablet", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate, hint: 'Mniejsze zdjęcie pomaga w szybkości ładowania strony' }
-#              - { label: "Zdjęcie w tle - dla telefonów (768px)", name: "heroImageMobile", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate, hint: 'Mniejsze zdjęcie pomaga w szybkości ładowania strony'}
-
+      - name: "homepage"
+        i18n: true
+        label: "Strona główna"
+        file: src/content/pageHomepage/pageHomepage.md
+        fields:
+          - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
+      - name: "error-404"
+        i18n: true
+        label: "Strona 404 - Adresu nie znaleziono"
+        file: src/content/page404/page404.md
+        fields:
+          - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
+          - { label: "Opis", name: "description", widget: "markdown", i18n: true }
       - name: "about"
         label: "O mnie" # Used in the UI
         file: src/content/pageAbout/pageAbout.md

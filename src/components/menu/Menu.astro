@@ -1,0 +1,68 @@
+---
+const currentPath = Astro.url.pathname;
+import Portfolio from '../../assets/portfolio.svg'
+import About from '../../assets/omnie.svg'
+import Ofert from '../../assets/oferta.svg'
+import Contact from '../../assets/kontakt.svg'
+import Instagram from '../../assets/instagram.svg'
+import Behance from '../../assets/behance.svg'
+import { House } from '@lucide/astro';
+---
+<style is:global>
+    .menu__link--active svg .cls-1 {
+        fill: var(--color-orange)
+    }
+</style>
+<style lang="scss">
+  .menu {
+      width: 256px;
+    margin-top: 16px;
+      margin-left: auto;
+      margin-right: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @media screen and (min-width: 768px) {
+      height: 100vh;
+      position: fixed;
+      top: 64px;
+
+    }
+
+      &__social{
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: flex-end;
+      }
+  }
+
+</style>
+<nav class="menu">
+    <a href="/" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
+        <House color="#173949" size="32"/>
+    </a>
+    <a href="/portfolio" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
+        <Portfolio/>
+    </a>
+    <a href="/o-mnie" class={`menu__link ${currentPath.includes('/o-mnie') ? 'menu__link--active' : ''}`}>
+        <About/>
+    </a>
+    <a href="/oferta" class={`menu__link ${currentPath.includes('/oferta') ? 'menu__link--active' : ''}`}>
+        <Ofert/>
+    </a>
+    <a href="/kontakt" class={`menu__link ${currentPath.includes('/kontakt') ? 'menu__link--active' : ''}`}>
+        <Contact/>
+    </a>
+        <a href="https://www.instagram.com/h.lepieszkiewicz.illu/" class="menu__link">
+            <Instagram />
+        </a>
+        <a href="https://www.behance.net/hannalepiesz" class="menu__link">
+            <Behance />
+        </a>
+    <!--<div class="menu__social">-->
+
+    <!--</div>-->
+</nav>
