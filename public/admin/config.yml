@@ -33,7 +33,7 @@ collections:
       - name: "error-404"
         i18n: true
         label: "Strona 404 - Adresu nie znaleziono"
-        file: src/content/page404/page404.md
+        file: src/content/pageError/pageError.md
         fields:
           - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
           - { label: "Opis", name: "description", widget: "markdown", i18n: true }

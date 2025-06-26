@@ -2,8 +2,8 @@
 import {Image} from "astro:assets";
 import {getCollection, render} from 'astro:content';
 const locale = Astro.currentLocale ?? 'pl';
-import { marked } from 'marked';
-import { ArrowLeft } from '@lucide/astro';
+import {marked} from 'marked';
+import {ArrowLeft} from '@lucide/astro';
 const pageCollection = await getCollection('pagePortfolio');
 import Layout from "../../layouts/Layout.astro";
 const pageData = pageCollection[0].data[locale]
@@ -24,7 +24,7 @@ const renderHTMLFromMarkdown = (markdownText) =>
   DOMPurify.sanitize(marked.parse(markdownText));
 ---
 <style is:global>
-    @media screen and (max-width: 767px)  {
+    @media screen and (max-width: 767px) {
         nav.menu {
             display: none !important;
         }
@@ -33,23 +33,26 @@ const renderHTMLFromMarkdown = (markdownText) =>
 </style>
 <style lang="scss">
 
-  .image{
+  .image {
     height: auto;
-      width: 100%;
+    width: 100%;
     object-fit: contain;
-      margin-bottom: 2rem;
-      border-radius: 12px;
+    margin-bottom: 2rem;
+    border-radius: 12px;
 
   }
-  .image-wrapper{
-      border-radius: 12px;
-      overflow: hidden;
-      max-width: 600px;
+
+  .image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 600px;
   }
-.text-wrapper{
+
+  .text-wrapper {
     max-width: 60ch;
-}
-.back-wrapper{
+  }
+
+  .back-wrapper {
     display: inline-flex;
     padding: 8px 16px;
     border-radius: 12px;
@@ -58,24 +61,24 @@ const renderHTMLFromMarkdown = (markdownText) =>
     border: 2px solid var(--color-blue);
     margin-bottom: 16px;
 
-}
-.link{
+  }
+
+  .link {
     color: var(--color-blue);
     text-decoration: none;
     font-weight: 700;
-}
+  }
 </style>
 <Layout withoutBodyTransition={true}>
-
-
-        <a href={deployToNetlify ? `/portfolio/#${slug}` :`/portfolio#${slug}`}  class="link back-wrapper"> <ArrowLeft color="rgb(33, 80, 104)"/> Wróć</a>
-    <h2 >{data.title}</h2>
+    <a href={deployToNetlify ? `/portfolio/#${slug}` : `/portfolio#${slug}`} class="link back-wrapper">
+        <ArrowLeft color="rgb(33, 80, 104)"/>
+        Wróć</a>
+    <h2>{data.title}</h2>
     <div class="image-wrapper">
-
-    <Image transition:name={slug} src={data.image} alt="Portert Hani" class="image" width="512" height="800"/>
+        <Image transition:name={slug} src={data.image} alt="Portert Hani" class="image" width="512" height="800"/>
     </div>
     <div class="text-wrapper">
-    <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")} />
+        <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")}/>
 
     </div>
 </Layout>

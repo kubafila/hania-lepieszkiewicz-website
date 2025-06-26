@@ -72,6 +72,37 @@ const pageOfferCollection = defineCollection({
   schema: pageOfferi18n
 });
 
+////////////// Główna
+const pageHomepage = (image) => z.object({
+  image: image(),
+})
+
+const pageHomepagei18n = ({ image }) => z.object({
+  pl: pageHomepage(image),
+});
+
+
+const pageHomepageCollection = defineCollection({
+  type: "content",
+  schema: pageHomepagei18n
+});
+
+////////////// Error
+const pageError = (image) => z.object({
+  image: image(),
+  description: z.string()
+})
+
+const pageErrori18n = ({ image }) => z.object({
+  pl: pageError(image),
+});
+
+
+const pageErrorCollection = defineCollection({
+  type: "content",
+  schema: pageErrori18n
+});
+
 
 /// Ustawienia
 const siteSettingsSchema = (image) => z.object({
@@ -102,5 +133,7 @@ export const collections = {
   'pageAbout': pageAboutCollection,
   'pageContact': pageContactCollection,
   'pageOffer': pageOfferCollection,
+  'pageHomepage': pageHomepageCollection,
+  'pageError': pageErrorCollection,
   "settings": settingsCollection
 }

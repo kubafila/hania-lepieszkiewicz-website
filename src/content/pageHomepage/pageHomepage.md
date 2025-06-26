@@ -1,5 +1,5 @@
 ---
 pl:
   heroImage: /src/assets/homepage.png
-  image: /src/assets/homepage.png
+  image: /src/assets/1750843196654.jpeg
 ---
