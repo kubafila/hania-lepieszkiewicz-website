@@ -45,11 +45,11 @@ import { House } from '@lucide/astro';
     <a href="/" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
         <House color="#173949" size="32"/>
     </a>
-    <a href="/portfolio" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
-        <Portfolio/>
-    </a>
     <a href="/o-mnie" class={`menu__link ${currentPath.includes('/o-mnie') ? 'menu__link--active' : ''}`}>
         <About/>
+    </a>
+    <a href="/portfolio" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
+        <Portfolio/>
     </a>
     <a href="/oferta" class={`menu__link ${currentPath.includes('/oferta') ? 'menu__link--active' : ''}`}>
         <Ofert/>

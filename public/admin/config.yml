@@ -30,13 +30,6 @@ collections:
         file: src/content/pageHomepage/pageHomepage.md
         fields:
           - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
-      - name: "error-404"
-        i18n: true
-        label: "Strona 404 - Adresu nie znaleziono"
-        file: src/content/pageError/pageError.md
-        fields:
-          - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
-          - { label: "Opis", name: "description", widget: "markdown", i18n: true }
       - name: "about"
         label: "O mnie" # Used in the UI
         file: src/content/pageAbout/pageAbout.md
@@ -55,11 +48,11 @@ collections:
             widget: "list"
             summary: '{{fields.title}}'
             fields:
-              - {label: "Widoczna", name: "visible", widget: "boolean", default: true}
-              - {label: "Tytuł", name: "title", widget: "string"}
-              - {label: "Slug", name: "slug", widget: "string", hint: 'Jaka ma być końcóweczka adresu strony. Bez spacji i polskich znaków. np. /portfolio/na-kurze-roze'}
-              - {label: "Grafika", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
-              - {label: "Opis", name: "description", widget: "markdown", i18n: true, required: false }
+              - { label: "Widoczna", name: "visible", widget: "boolean", default: true }
+              - { label: "Tytuł", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string", hint: 'Jaka ma być końcóweczka adresu strony. Bez spacji i polskich znaków. np. /portfolio/na-kurze-roze' }
+              - { label: "Grafika", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
+              - { label: "Opis", name: "description", widget: "markdown", i18n: true, required: false }
       - name: "offer-page"
         label: "Oferta" # Used in the UI
         i18n: true
@@ -74,6 +67,13 @@ collections:
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
           - { label: "Opis", name: "description", widget: "markdown", i18n: true,  required: false }
+      - name: "error-404"
+        i18n: true
+        label: "Strona 404 - Adresu nie znaleziono"
+        file: src/content/pageError/pageError.md
+        fields:
+          - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
+          - { label: "Opis", name: "description", widget: "markdown", i18n: true }
 
   - name: 'settings'
     label: 'Ustawienia'
