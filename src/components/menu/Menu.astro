@@ -6,7 +6,7 @@ import Ofert from '../../assets/oferta.svg'
 import Contact from '../../assets/kontakt.svg'
 import Instagram from '../../assets/instagram.svg'
 import Behance from '../../assets/behance.svg'
-import { House } from '@lucide/astro';
+import {House} from '@lucide/astro';
 ---
 <style is:global>
     .menu__link--active svg .cls-1 {
@@ -15,10 +15,10 @@ import { House } from '@lucide/astro';
 </style>
 <style lang="scss">
   .menu {
-      width: 256px;
+    width: 256px;
     margin-top: 16px;
-      margin-left: auto;
-      margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
@@ -31,13 +31,13 @@ import { House } from '@lucide/astro';
 
     }
 
-      &__social{
-          display: flex;
-          width: 100%;
-          gap: 24px;
-          justify-content: flex-start;
-          align-items: flex-end;
-      }
+    &__social {
+      display: flex;
+      width: 100%;
+      gap: 24px;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
   }
 
 </style>
@@ -57,12 +57,12 @@ import { House } from '@lucide/astro';
     <a href="/kontakt" class={`menu__link ${currentPath.includes('/kontakt') ? 'menu__link--active' : ''}`}>
         <Contact/>
     </a>
-        <a href="https://www.instagram.com/h.lepieszkiewicz.illu/" class="menu__link">
-            <Instagram />
-        </a>
-        <a href="https://www.behance.net/hannalepiesz" class="menu__link">
-            <Behance />
-        </a>
+    <a href="https://www.instagram.com/h.lepieszkiewicz.illu/" class="menu__link">
+        <Instagram/>
+    </a>
+    <a href="https://www.behance.net/hannalepiesz" class="menu__link">
+        <Behance/>
+    </a>
     <!--<div class="menu__social">-->
 
     <!--</div>-->
