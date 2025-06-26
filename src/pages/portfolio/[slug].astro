@@ -67,10 +67,8 @@ const renderHTMLFromMarkdown = (markdownText) =>
 </style>
 <Layout withoutBodyTransition={true}>
 
-    <div class="back-wrapper">
-        <ArrowLeft color="rgb(33, 80, 104)"/>
-        <a href={deployToNetlify ? `/portfolio/#${slug}` :`/portfolio#${slug}`}  class="link">Wróć</a>
-    </div>
+
+        <a href={deployToNetlify ? `/portfolio/#${slug}` :`/portfolio#${slug}`}  class="link back-wrapper"> <ArrowLeft color="rgb(33, 80, 104)"/> Wróć</a>
     <h2 >{data.title}</h2>
     <div class="image-wrapper">
 
