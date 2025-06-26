@@ -76,7 +76,15 @@ const renderHTMLFromMarkdown = (markdownText) =>
     <h2>{data.title}</h2>
     <div class="image-wrapper">
         <Image transition:name={slug} src={data.image} alt="Portert Hani" class="image" width="512" height="800"/>
+
     </div>
+
+    {data.additionalImages && data.additionalImages.map(image => (
+      <div class="image-wrapper">
+          <Image transition:name={slug} src={image} alt={data.title} class="image" width="512" height="800"/>
+
+      </div>
+    ))}
     <div class="text-wrapper">
         <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")}/>
 

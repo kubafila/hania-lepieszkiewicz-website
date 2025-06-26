@@ -11,7 +11,7 @@ pl:
         Z tej okazji pokazuję ilustrację na kartkę świąteczną, którą stworzyłam dla szczecińskiego przedszkola 😊 
     - visible: true
       image: /src/assets/1750843133295.jpeg
-      title: "Alicja w Krainie Kwiatów"
+      title: Alicja w Krainie Kwiatów
       slug: alicja-w-krainie-kwatow
       description: Wiosenny plakacik na podstawie ilustracji ze szkicownika sprzed 2
         lat. Alicja w Krainie Kwiatów 🌸🌼
@@ -37,37 +37,16 @@ pl:
       title: Zabawa swobodna
       slug: zabawa-swobodna
       description: Karty Aktywności Dzieci, autorka dr Magdalena Wegner-Jezierska
-    - visible: false
-      title: Kosma
-      slug: kosma
-      image: /src/assets/1750843615070.jpeg
-      description: >
-        Pewien młody dżentelmen, którego rodzice lubią leśne klimaty, skończył
-        niedawno rok i z tej okazji jego rodzinka zamówiła tę oto ilustrację! 🌿
-        Miał być Kosma, las i borsuk! 🦡
     - visible: true
       image: /src/assets/1750843183918.jpeg
-      title: Żółwik
-      slug: zolwik
+      title: Rulonikowe grafiki
+      slug: rulonikowe-grafiki
       description: ""
-    - visible: true
-      image: /src/assets/1750843192015.jpeg
-      title: Goryl
-      slug: goryl
-    - visible: false
-      image: /src/assets/1750843196654.jpeg
-      title: Krab
-      slug: krab
-      description: ""
-    - visible: true
-      image: /src/assets/1750843200718.jpeg
-      title: Sowa
-      slug: sowa
-    - visible: true
-      image: /src/assets/1750843205715.jpeg
-      title: Żyrafa
-      slug: zyrafa
-      description: Żyrafka
+      additionalImages:
+        - /src/assets/1750843192015.jpeg
+        - /src/assets/1750843196654.jpeg
+        - /src/assets/1750843200718.jpeg
+        - /src/assets/1750843205715.jpeg
     - visible: true
       image: /src/assets/1750843214141.jpeg
       title: "Cozy coffee shop corner "

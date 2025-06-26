@@ -9,6 +9,7 @@ const pagePortfolio = (image) => z.object({
     title: z.string(),
     slug: z.string(),
     image: image(),
+    additionalImages: z.array(image()).optional(),
     description: z.string().optional()
   }))
 })
