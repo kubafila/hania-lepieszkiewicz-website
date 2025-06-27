@@ -1,7 +1,7 @@
 ---
 pl:
   metaTags:
-    title: Hania Lepieszkiewicz - Portfolio a
+    title: Hania Lepieszkiewicz - Portfolio
     description: Hania Lepieszkiewicz - Portfolio
     keywords: "Ilustracja, Bajki, "
   openGraph:
