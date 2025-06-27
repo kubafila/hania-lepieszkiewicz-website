@@ -1,25 +1,23 @@
 ---
+import {getEntry} from "astro:content";
 import {Image} from "astro:assets";
-import {getCollection, render} from 'astro:content';
-const locale = Astro.currentLocale ?? 'pl';
 import {marked} from 'marked';
 import {ArrowLeft} from '@lucide/astro';
-const pageCollection = await getCollection('pagePortfolio');
 import Layout from "../../layouts/Layout.astro";
-const pageData = pageCollection[0].data[locale]
 import DOMPurify from 'isomorphic-dompurify';
-export async function getStaticPaths() {
-  const locale = Astro.currentLocale ?? 'pl';
-  const pageCollection = await getCollection('pagePortfolio');
-  const pageData = pageCollection[0].data[locale]
-  return pageData.items.map(item => ({params: {slug: item.slug}}))
-}
-
 const {slug} = Astro.params;
 const deployToNetlify = import.meta.env.DEPLOY_TO_NETLIFY
+const locale = Astro.currentLocale ?? 'pl';
+const entry = await getEntry('portfolio', 'portfolio');
+const data = entry.data[locale].items.find(item => item.slug === slug)
 
+export async function getStaticPaths() {
+  const locale = Astro.currentLocale ?? 'pl';
+  const entry = await getEntry('portfolio', 'portfolio');
+  const data = entry.data[locale]
+  return data.items.map(item => ({params: {slug: item.slug}}))
+}
 
-const data = pageData.items.find(item => item.slug === slug)
 const renderHTMLFromMarkdown = (markdownText) =>
   DOMPurify.sanitize(marked.parse(markdownText));
 ---
@@ -79,12 +77,12 @@ const renderHTMLFromMarkdown = (markdownText) =>
 
     </div>
 
-    {data.additionalImages && data.additionalImages.map(image => (
-      <div class="image-wrapper">
-          <Image transition:name={slug} src={image} alt={data.title} class="image" width="512" height="800"/>
+  {data.additionalImages && data.additionalImages.map(image => (
+          <div class="image-wrapper">
+              <Image transition:name={slug} src={image} alt={data.title} class="image" width="512" height="800"/>
 
-      </div>
-    ))}
+          </div>
+  ))}
     <div class="text-wrapper">
         <Fragment set:html={renderHTMLFromMarkdown(data.description ?? "")}/>
 

@@ -27,19 +27,19 @@ collections:
       - name: "homepage"
         i18n: true
         label: "Strona główna"
-        file: src/content/pageHomepage/pageHomepage.md
+        file: src/content/pages/homepage.md
         fields:
           - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
       - name: "about"
         label: "O mnie" # Used in the UI
-        file: src/content/pageAbout/pageAbout.md
+        file: src/content/pages/about.md
         i18n: true
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
           - { label: "Opis", name: "description", widget: "markdown", i18n: true }
       - name: "portfolio"
         label: "Portfolio" # Used in the UI
-        file: src/content/pagePortfolio/pagePortfolio.md
+        file: src/content/pages/portfolio.md
         i18n: true
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
@@ -67,25 +67,24 @@ collections:
       - name: "offer-page"
         label: "Oferta" # Used in the UI
         i18n: true
-        file: src/content/pageOffer/pageOffer.md
+        file: src/content/pages/offer.md
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
           - { label: "Opis", name: "description", widget: "markdown", i18n: true,  required: false }
       - name: "contact-page"
         label: "Kontakt" # Used in the UI
         i18n: true
-        file: src/content/pageContact/pageContact.md
+        file: src/content/pages/contact.md
         fields:
           - { label: "Tytuł strony", name: "title", widget: "string", i18n: true }
           - { label: "Opis", name: "description", widget: "markdown", i18n: true,  required: false }
       - name: "error-404"
         i18n: true
         label: "Strona 404 - Adresu nie znaleziono"
-        file: src/content/pageError/pageError.md
+        file: src/content/pages/error.md
         fields:
           - { label: "Ilustracja", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
           - { label: "Opis", name: "description", widget: "markdown", i18n: true }
-
   - name: 'settings'
     label: 'Ustawienia'
     sortable_fields: [ ]
@@ -95,39 +94,6 @@ collections:
     files:
       - file: src/content/settings/meta.md
         label: 'Meta tagi'
-        name: 'meta'
-        i18n: true
-        create: false
-        delete: false
-        editor:
-          preview: false
-        fields:
-          - label: "Meta Tagi"
-            hint: 'Meta tagi - https://pomoc.home.pl/baza-wiedzy/najwazniejsze-znaczniki-meta-i-ich-funkcje-meta-tagi'
-            i18n: true
-            name: "metaTags"
-            widget: "object"
-            fields:
-              - { label: "Tytuł strony", name: "title", hint: 'Widoczny w tytule przeglądarki', widget: "string" , i18n: true }
-              - { label: "Meta description - opis strony", name: "description", hint: 'Najlepiej między 50 a 150 znaków', widget: "text", i18n: true }
-              - { label: "Meta keywords - Słowa kluczowe", name: "keywords", hint: 'Oddzielone przecinkami', widget: "text", i18n: true }
-          - label: "Tagi Open Graph"
-            hint: "Tagi Open Grap - Np. Jak ma wyglądać podgląd, kiedy wysyłasz stronę przez Facebooka https://lumo.pl/blog/open-graph/. Sprawdź jak wygląda podgląd na https://developers.facebook.com/tools/debug/"
-            i18n: true
-            name: "openGraph"
-            widget: "object"
-            summary: 'Tagi Open Graph'
-            fields:
-              - { label: "Tytuł - Podgląd w social mediach", name: "title", widget: "string", hint: 'Tytuł podglądu kiedy np. kiedy wysyłasz stronę przez Facebooka albo LinkedIn', i18n: true }
-              - { label: "Opis - Podgląd w social mediach", name: "description", widget: "text", i18n: true }
-              - label: "Zdjęcie - Podgląd w social mediach"
-                name: "image"
-                widget: "image"
-                choose_url: false
-                public_folder: "/src/assets/"
-                i18n: "duplicate"
-      - file: src/content/settings/menu.md
-        label: 'Menu'
         name: 'meta'
         i18n: true
         create: false

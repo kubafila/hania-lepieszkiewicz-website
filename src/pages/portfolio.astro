@@ -1,14 +1,15 @@
 ---
 import DOMPurify from "isomorphic-dompurify";
+import {getEntry, getCollection} from "astro:content";
 import {marked} from "marked";
 import PortfolioCard from "../components/PortfolioCard.astro";
-const locale = Astro.currentLocale ?? 'pl';
 import { getCollection } from 'astro:content';
 import Layout from "../layouts/Layout.astro";
 
-const pageCollection = await getCollection('pagePortfolio');
 
-const pageData = pageCollection[0].data[locale]
+const locale = Astro.currentLocale ?? 'pl';
+const entry = await getEntry('portfolio', 'portfolio');
+const data = entry.data[locale]
 
 const renderHTMLFromMarkdown = (markdownText) =>
   DOMPurify.sanitize(marked.parse(markdownText));
@@ -28,9 +29,8 @@ const renderHTMLFromMarkdown = (markdownText) =>
 </style>
 <Layout>
 
-
     <div class="wrapper">
-        {pageData.items.filter(item => item.visible).map(({title,image, slug }) => <PortfolioCard title={title} image={image} slug={slug}/>) }
+        {data.items.filter(item => item.visible).map(({title,image, slug }) => <PortfolioCard title={title} image={image} slug={slug}/>) }
     </div>
 
 </Layout>
