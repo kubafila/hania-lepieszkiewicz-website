@@ -93,8 +93,41 @@ collections:
       structure: single_file
       locales: [ pl ]
     files:
-      - file: src/content/settings/settings.md
+      - file: src/content/settings/meta.md
         label: 'Meta tagi'
+        name: 'meta'
+        i18n: true
+        create: false
+        delete: false
+        editor:
+          preview: false
+        fields:
+          - label: "Meta Tagi"
+            hint: 'Meta tagi - https://pomoc.home.pl/baza-wiedzy/najwazniejsze-znaczniki-meta-i-ich-funkcje-meta-tagi'
+            i18n: true
+            name: "metaTags"
+            widget: "object"
+            fields:
+              - { label: "Tytuł strony", name: "title", hint: 'Widoczny w tytule przeglądarki', widget: "string" , i18n: true }
+              - { label: "Meta description - opis strony", name: "description", hint: 'Najlepiej między 50 a 150 znaków', widget: "text", i18n: true }
+              - { label: "Meta keywords - Słowa kluczowe", name: "keywords", hint: 'Oddzielone przecinkami', widget: "text", i18n: true }
+          - label: "Tagi Open Graph"
+            hint: "Tagi Open Grap - Np. Jak ma wyglądać podgląd, kiedy wysyłasz stronę przez Facebooka https://lumo.pl/blog/open-graph/. Sprawdź jak wygląda podgląd na https://developers.facebook.com/tools/debug/"
+            i18n: true
+            name: "openGraph"
+            widget: "object"
+            summary: 'Tagi Open Graph'
+            fields:
+              - { label: "Tytuł - Podgląd w social mediach", name: "title", widget: "string", hint: 'Tytuł podglądu kiedy np. kiedy wysyłasz stronę przez Facebooka albo LinkedIn', i18n: true }
+              - { label: "Opis - Podgląd w social mediach", name: "description", widget: "text", i18n: true }
+              - label: "Zdjęcie - Podgląd w social mediach"
+                name: "image"
+                widget: "image"
+                choose_url: false
+                public_folder: "/src/assets/"
+                i18n: "duplicate"
+      - file: src/content/settings/menu.md
+        label: 'Menu'
         name: 'meta'
         i18n: true
         create: false

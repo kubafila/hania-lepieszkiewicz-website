@@ -1,5 +1,6 @@
 // Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection, image } from "astro:content";
+import {  file } from 'astro/loaders'; // Not available with legacy API
 
 ///////////Portfolio
 const pagePortfolio = (image) => z.object({
@@ -20,7 +21,7 @@ const pagePortfolioi18n = ({ image }) => z.object({
 
 
 const pagePortfolioCollection = defineCollection({
-  type: "content",
+  loader: file('src/content/pagePortfolio/pagePortfolio.md'),
   schema: pagePortfolioi18n
 });
 
@@ -37,7 +38,7 @@ const pageAbouti18n = ({ image }) => z.object({
 
 
 const pageAboutCollection = defineCollection({
-  type: "content",
+  loader: file('src/content/pageAbout/pageAbout.md'),
   schema: pageAbouti18n
 });
 
@@ -53,7 +54,7 @@ const pageContacti18n = ({ image }) => z.object({
 
 
 const pageContactCollection = defineCollection({
-  type: "content",
+  loader: file('src/content/pageContact/pageContact.md'),
   schema: pageContacti18n
 });
 
@@ -69,7 +70,7 @@ const pageOfferi18n = ({ image }) => z.object({
 
 
 const pageOfferCollection = defineCollection({
-  type: "content",
+  loader: file('src/content/pageOffer/pageOffer.md'),
   schema: pageOfferi18n
 });
 
@@ -84,7 +85,7 @@ const pageHomepagei18n = ({ image }) => z.object({
 
 
 const pageHomepageCollection = defineCollection({
-  type: "content",
+  loader: file('src/content/pageHomepage/pageHomepage.md'),
   schema: pageHomepagei18n
 });
 
@@ -100,13 +101,13 @@ const pageErrori18n = ({ image }) => z.object({
 
 
 const pageErrorCollection = defineCollection({
-  type: "content",
+  loader: file('src/content/pageError/pageError.md'),
   schema: pageErrori18n
 });
 
 
 /// Ustawienia
-const siteSettingsSchema = (image) => z.object({
+const metaSettingsSchema = (image) => z.object({
   metaTags: z.object({
     title: z.string(),
     description: z.string(),
@@ -120,21 +121,20 @@ const siteSettingsSchema = (image) => z.object({
 
 });
 
-const siteSettingsSchemai18n = ({ image }) => z.object({
-  pl: siteSettingsSchema(image),
+const metaSettingsSchemai18n = ({ image }) => z.object({
+  pl: metaSettingsSchema(image),
 });
 
-const settingsCollection = defineCollection({
-  type: "content",
-  schema: siteSettingsSchemai18n
+const metaSettings = defineCollection({
+  loader: file('src/content/settings/meta.md'),
+  schema: metaSettingsSchemai18n
 });
 export const collections = {
-  // nazwa folderu: nazwa kolekcji
-  'pagePortfolio': pagePortfolioCollection,
-  'pageAbout': pageAboutCollection,
-  'pageContact': pageContactCollection,
-  'pageOffer': pageOfferCollection,
-  'pageHomepage': pageHomepageCollection,
-  'pageError': pageErrorCollection,
-  "settings": settingsCollection
+  pagePortfolioCollection,
+  pageAboutCollection,
+  pageContactCollection,
+  pageOfferCollection,
+  pageHomepageCollection,
+  pageErrorCollection,
+  metaSettings
 }

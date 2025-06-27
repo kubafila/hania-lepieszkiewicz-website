@@ -10,7 +10,7 @@ import '@fontsource/fira-sans';
 
 import Menu from "../components/menu/Menu.astro";
 
-const siteSettingsEntry = await getEntry('settings', 'settings');
+const siteSettingsEntry = await getEntry('metaSettings', 'meta');
 const siteSettings = siteSettingsEntry.data[locale];
 
 const {withoutBodyTransition} = Astro.props
