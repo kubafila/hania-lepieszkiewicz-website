@@ -1,12 +1,10 @@
 ---
+import {getEntry} from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from 'astro:content';
 import {Image} from 'astro:assets';
 const locale = Astro.currentLocale ?? 'pl';
-
-const pageCollection = await getCollection('pageError');
-
-const data = pageCollection[0].data[locale]
+const entry = await getEntry('error', 'error');
+const data = entry.data[locale]
 ---
 <style lang="scss">
   body {

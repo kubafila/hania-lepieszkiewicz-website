@@ -1,15 +1,14 @@
 
 ---
 import DOMPurify from "isomorphic-dompurify";
+import {getEntry} from "astro:content";
 import {marked} from "marked";
 import Layout from "../layouts/Layout.astro";
 
+
 const locale = Astro.currentLocale ?? 'pl';
-import { getCollection } from 'astro:content';
-
-const pageCollection = await getCollection('pageAbout');
-
-const data = pageCollection[0].data[locale]
+const entry = await getEntry('about', 'about');
+const data = entry.data[locale]
 const renderHTMLFromMarkdown = (markdownText) =>
   DOMPurify.sanitize(marked.parse(markdownText));
 ---
