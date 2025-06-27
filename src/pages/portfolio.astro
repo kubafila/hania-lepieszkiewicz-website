@@ -30,7 +30,7 @@ const renderHTMLFromMarkdown = (markdownText) =>
 <Layout>
 
     <div class="wrapper">
-        {data.items.filter(item => item.visible).map(({title,image, slug }) => <PortfolioCard title={title} image={image} slug={slug}/>) }
+        {data.items.filter(item => item.visible).map(item => (<PortfolioCard {...item}/>)) }
     </div>
 
 </Layout>

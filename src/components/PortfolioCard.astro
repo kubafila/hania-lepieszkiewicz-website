@@ -1,51 +1,91 @@
 ---
 import {Image} from 'astro:assets';
-const {image, title, slug} = Astro.props
+const {image, title, slug, additionalImages = []} = Astro.props
+
+const NUMBER_OF_PICTURES = 3
+const additionalImagesSlice = (additionalImages).slice(0, NUMBER_OF_PICTURES)
 ---
 <style lang="scss">
-    .card-wrapper{
-        width: 100%;
-        height: 100%;
-        min-height: 400px;
-        padding-top: 32px;
-    }
-    .card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        text-decoration: none;
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            transition:  box-shadow 200ms cubic-bezier(.25,.8,.25,1);
+  .card-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    padding-top: 32px;
+  }
 
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: box-shadow 200ms cubic-bezier(.25, .8, .25, 1);
+    overflow: hidden;
 
-        @media screen and (min-width: 768px) {
-            &:hover{
-                .card__image{
-                    transform: scale(1.05);
-                }
-            }
+    &--fan {
+      overflow: visible;
+
+        .card__image{
+            transform-origin: left top;
 
         }
-
-        &__image{
-            transform: scale(1);
-            transition: transform 200ms ease-in-out;
-            border-radius: 12px;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-        }
     }
+
+    @media screen and (min-width: 768px) {
+      &:hover {
+        .card__image {
+          transform: scale(1.05);
+          border: 1px solid #eee;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);;
+
+          &:nth-child(1) {
+            transform: rotate(0) translateY(0) scale(1.05);
+          }
+
+          &:nth-child(2) {
+            transform: rotate(-5deg)  scale(1.05);
+          }
+
+          &:nth-child(3) {
+            transform: rotate(-10deg)  scale(1.05);
+          }
+
+          &:nth-child(4) {
+            transform: rotate(-15deg)  scale(1.05);
+          }
+        }
+
+      }
+
+    }
+
+    &__image {
+      position: absolute;
+      transform: rotate(0) scale(1);
+      transition: transform 200ms ease-in-out;
+      border-radius: 12px;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
 </style>
-<div class="card-wrapper"  id={slug}>
-    <a href={`/portfolio/${slug}`} class="card" >
+<div class="card-wrapper" id={slug}>
+    <a href={`/portfolio/${slug}`}
+       class={(additionalImages && additionalImages.length > 0) ? 'card card--fan' : 'card'}>
+
+      {additionalImagesSlice.reverse().map((src: string) => (
+              <Image src={src} alt={title} class="card__image"  width="512" height="800"/>))}
         <Image src={image} alt={title} class="card__image" transition:name={slug} width="512" height="800"/>
+
+
     </a>
 </div>
