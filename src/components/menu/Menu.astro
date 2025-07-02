@@ -1,18 +1,29 @@
 ---
 const currentPath = Astro.url.pathname;
+import {getEntry} from "astro:content";
+import {Image} from 'astro:assets';
 import Portfolio from '../../assets/portfolio.svg'
 import About from '../../assets/omnie.svg'
 import Ofert from '../../assets/oferta.svg'
 import Contact from '../../assets/kontakt.svg'
 import Instagram from '../../assets/instagram.svg'
 import Behance from '../../assets/behance.svg'
-import {House} from '@lucide/astro';
+
+const locale = Astro.currentLocale ?? 'pl';
+const entry = await getEntry('menuSettings', 'menu');
+const data = entry.data[locale]
+
+const highlightActiveTab = data.highlight
+const activeColor = highlightActiveTab ? data.background ?? "" : "#173949"
 ---
-<style is:global>
+<style is:global define:vars={{ activeColor }}>
     .menu__link--active svg .cls-1 {
-        fill: var(--color-orange)
+        transition: fill 200ms ease-in-out;
+        fill: var(--activeColor)
     }
+
 </style>
+
 <style lang="scss">
   .menu {
     width: 256px;
@@ -43,7 +54,7 @@ import {House} from '@lucide/astro';
 </style>
 <nav class="menu">
     <a href="/" class={`menu__link ${currentPath.includes('/portfolio') ? 'menu__link--active' : ''}`}>
-        <House color="#173949" size="32"/>
+       <Image alt={data.homepage.altText} src={data.homepage.image} width={32}>
     </a>
     <a href="/o-mnie" class={`menu__link ${currentPath.includes('/o-mnie') ? 'menu__link--active' : ''}`}>
         <About/>

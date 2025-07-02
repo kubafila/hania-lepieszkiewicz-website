@@ -129,6 +129,26 @@ const metaSettings = defineCollection({
   loader: glob({pattern: "meta.md", base: 'src/content/settings'}),
   schema: metaSettingsSchemai18n
 });
+
+
+////////////menu
+const menuSettingsSchema = (image) => z.object({
+    highlight: z.boolean(),
+    background: z.string(),
+    homepage: z.object({
+      image: image(),
+      altText: z.string()
+    })
+  })
+
+const menuSettingsSchemai18n = ({image}) => z.object({
+  pl: menuSettingsSchema(image),
+});
+
+const menuSettings = defineCollection({
+  loader: glob({pattern: "menu.md", base: 'src/content/settings'}),
+  schema: menuSettingsSchemai18n
+});
 export const collections = {
   portfolio,
   about,
@@ -136,5 +156,6 @@ export const collections = {
   offer,
   homepage,
   error,
-  metaSettings
+  metaSettings,
+  menuSettings
 }

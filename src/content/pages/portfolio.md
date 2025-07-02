@@ -15,6 +15,10 @@ pl:
       slug: alicja-w-krainie-kwatow
       description: Wiosenny plakacik na podstawie ilustracji ze szkicownika sprzed 2
         lat. Alicja w Krainie Kwiatów 🌸🌼
+      additionalImages:
+        - /src/assets/1750843106210.jpeg
+        - /src/assets/1750843172769.jpeg
+        - /src/assets/1750843151239.jpeg
     - visible: true
       image: /src/assets/1750843142810.jpeg
       title: WIOSNA
