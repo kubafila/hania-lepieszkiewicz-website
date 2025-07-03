@@ -1,0 +1,36 @@
+---
+import DOMPurify from "isomorphic-dompurify";
+import {marked} from "marked";
+import {getCollection, getEntry, render} from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+
+const {slug} = Astro.params;
+export async function getStaticPaths() {
+  const weeks = await getCollection('weeks');
+  return weeks.map(item => ({
+    params: { slug: item.id },
+  }));
+}
+
+
+
+const entry = await getEntry('weeks', slug)
+const  data = entry.data
+
+
+const renderHTMLFromMarkdown = (markdownText) =>
+  DOMPurify.sanitize(marked.parse(markdownText));
+---
+<Layout>
+<h1>{data.title}</h1>
+
+{data.events.map(event => <div>
+
+    <h2>{event.title}</h2>
+    <p>- {event.date}</p>
+    <p>- {event.location}</p>
+  {event.price && <p>- {event.price}</p>}
+  {event.registration && <p>- {event.registration}</p>}
+    <Fragment set:html={renderHTMLFromMarkdown(event.body ?? "")}/>
+</div>)}
+</Layout>

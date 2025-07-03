@@ -143,3 +143,23 @@ collections:
             fields:
               - { label: "Grafika", name: "image", widget: "image", choose_url: false, public_folder: '/src/assets/', i18n: duplicate }
               - { label: "Tekst alternatywny", name: "altText", hint: "Np. jak się obrazek nie wczyta, albo dla czytników ekranowych",  widget: "string" , i18n: true }
+  - label: "Tydzień"
+    name: "week"
+    folder: "src/content/cowewro"
+    create: true
+    fields:
+      - { label: "Tytuł", name: "title",   widget: "string" , i18n: true }
+      - { label: "Tydzień od - ", name: "dateFrom",   widget: "datetime" , i18n: true }
+      - { label: "Tydzień do - ", name: "dateTo",   widget: "datetime" , i18n: true }
+      - label: "Wydarzenia"
+        name: "events"
+        widget: "list"
+        summary: '{{fields.title}}'
+        fields:
+          - {label: "Tytuł", name: "title", widget: "string"}
+          - {label: "Data", name: "date", widget: "string"}
+          - {label: "Miejsce", name: "location", widget: "string"}
+          - {label: "Cena", name: "price", widget: "string", required: false}
+          - {label: "Zapisy", name: "registration", widget: "string", required: false}
+          - {label: "Opis", name: "body", widget: "markdown"}
+

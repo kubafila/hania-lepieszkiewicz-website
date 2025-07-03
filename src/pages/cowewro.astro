@@ -1,0 +1,7 @@
+---
+import {getEntry, getCollection, render} from "astro:content";
+const locale = Astro.currentLocale ?? 'pl';
+const weeks = await getCollection('weeks');
+
+---
+<pre>{JSON.stringify(weeks, null, 2)}</pre>

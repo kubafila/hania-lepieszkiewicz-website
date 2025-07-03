@@ -149,6 +149,27 @@ const menuSettings = defineCollection({
   loader: glob({pattern: "menu.md", base: 'src/content/settings'}),
   schema: menuSettingsSchemai18n
 });
+
+export const weekSchema = z.object({
+  title: z.string(), // Tytuł tygodnia
+  dateFrom: z.date(), // Tydzień od
+  dateTo: z.date(),   // Tydzień do
+  events: z.array(
+    z.object({
+      title: z.string(),         // Tytuł wydarzenia
+      date: z.string(),          // Data wydarzenia (można zmienić na z.date() jeśli chcesz walidację ISO)
+      location: z.string(),      // Miejsce wydarzenia
+      price: z.string().optional(),         // Cena (opcjonalnie)
+      registration: z.string().optional(),  // Zapisy (opcjonalnie)
+      body: z.string(),          // Opis (markdown)
+    })
+  )
+})
+
+const weeks = defineCollection({
+  loader: glob({pattern: "*.md", base: 'src/content/cowewro'}),
+  schema: weekSchema
+});
 export const collections = {
   portfolio,
   about,
@@ -157,5 +178,6 @@ export const collections = {
   homepage,
   error,
   metaSettings,
-  menuSettings
+  menuSettings,
+  weeks
 }
