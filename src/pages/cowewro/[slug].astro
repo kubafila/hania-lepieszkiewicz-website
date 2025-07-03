@@ -3,34 +3,43 @@ import DOMPurify from "isomorphic-dompurify";
 import {marked} from "marked";
 import {getCollection, getEntry, render} from 'astro:content';
 import Layout from "../../layouts/Layout.astro";
+import slugify from "slugify";
 
 const {slug} = Astro.params;
 export async function getStaticPaths() {
   const weeks = await getCollection('weeks');
   return weeks.map(item => ({
-    params: { slug: item.id },
+    params: {slug: item.id},
   }));
 }
 
 
 
 const entry = await getEntry('weeks', slug)
-const  data = entry.data
+const data = entry.data
 
 
 const renderHTMLFromMarkdown = (markdownText) =>
   DOMPurify.sanitize(marked.parse(markdownText));
 ---
 <Layout>
-<h1>{data.title}</h1>
+    <h1>{data.title}</h1>
 
-{data.events.map(event => <div>
+  {data.events.map(event => {
 
-    <h2>{event.title}</h2>
-    <p>- {event.date}</p>
-    <p>- {event.location}</p>
-  {event.price && <p>- {event.price}</p>}
-  {event.registration && <p>- {event.registration}</p>}
-    <Fragment set:html={renderHTMLFromMarkdown(event.body ?? "")}/>
-</div>)}
+      const eventSlug= slugify(event.title, {lower: true, strict: true})
+      return (
+        <div>
+
+            <h2 transition:name={eventSlug}><a
+              href={`/cowewro/${entry.id}/wydarzenie/${eventSlug}`}>{event.title}</a></h2>
+            <p transition:name={`${eventSlug}-date`}><strong>Kiedy:</strong> {event.date}</p>
+            <p transition:name={`${eventSlug}-location`}><strong>Gdzie:</strong> {event.location}</p>
+            {event.price && <p transition:name={`${eventSlug}-price`}><strong>Cena:</strong> {event.price}</p>}
+            {event.registration && <p>- {event.registration}</p>}
+            <Fragment set:html={renderHTMLFromMarkdown(event.body ?? "")}/>
+        </div>
+      )
+  }
+          )}
 </Layout>

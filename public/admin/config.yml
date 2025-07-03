@@ -1,5 +1,5 @@
 local_backend:
-  url: http://localhost:8082/api/v1
+  url: http://localhost:8081/api/v1
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
@@ -146,20 +146,21 @@ collections:
   - label: "Tydzień"
     name: "week"
     folder: "src/content/cowewro"
+    slug: "{{fields.dateFrom}}"
     create: true
     fields:
       - { label: "Tytuł", name: "title",   widget: "string" , i18n: true }
-      - { label: "Tydzień od - ", name: "dateFrom",   widget: "datetime" , i18n: true }
-      - { label: "Tydzień do - ", name: "dateTo",   widget: "datetime" , i18n: true }
+      - { label: "Tydzień od - ", name: "dateFrom", widget: "datetime", format: "YYYY-MM-DD",  i18n: true,  }
+      - { label: "Tydzień do - ", name: "dateTo", widget: "datetime", format: "YYYY-MM-DD",  i18n: true,  }
       - label: "Wydarzenia"
         name: "events"
         widget: "list"
         summary: '{{fields.title}}'
         fields:
-          - {label: "Tytuł", name: "title", widget: "string"}
-          - {label: "Data", name: "date", widget: "string"}
-          - {label: "Miejsce", name: "location", widget: "string"}
-          - {label: "Cena", name: "price", widget: "string", required: false}
-          - {label: "Zapisy", name: "registration", widget: "string", required: false}
-          - {label: "Opis", name: "body", widget: "markdown"}
+          - { label: "Tytuł", name: "title", widget: "string" }
+          - { label: "Data", name: "date", widget: "string" }
+          - { label: "Miejsce", name: "location", widget: "string" }
+          - { label: "Cena", name: "price", widget: "string", required: false }
+          - { label: "Zapisy", name: "registration", widget: "string", required: false }
+          - { label: "Opis", name: "body", widget: "markdown" }
 

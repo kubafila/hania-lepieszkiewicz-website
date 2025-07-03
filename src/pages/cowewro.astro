@@ -1,7 +1,15 @@
 ---
 import {getEntry, getCollection, render} from "astro:content";
+import Layout from "../layouts/Layout.astro";
 const locale = Astro.currentLocale ?? 'pl';
 const weeks = await getCollection('weeks');
 
 ---
-<pre>{JSON.stringify(weeks, null, 2)}</pre>
+<Layout>
+<h1>Co we wro</h1>
+<ul>
+  {weeks.map(week => <li><a href={`/cowewro/${week.id}`}>{week.data.title}</a></li>)}
+</ul>
+
+     <!--<pre>{JSON.stringify(weeks, null, 2)}</pre>-->
+</Layout>
